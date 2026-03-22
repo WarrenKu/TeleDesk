@@ -1,3 +1,24 @@
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# Environment & secrets — JANGAN push token ke sini!
 .env
+*.env
+config.py
+
+# Temp files bot
+_bot_CMD-*.bat
+ss_*.png
+
+# Playwright
+playwright/.local-browsers/
+
+# IDE
+.vscode/
+.idea/
+*.suo
+*.user
