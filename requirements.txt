@@ -1,0 +1,11 @@
+python-telegram-bot
+playwright
+pycaw
+comtypes
+pyautogui
+Pillow
+requests
+pyttsx3
+pygetwindow
+psutil
+pyperclip
