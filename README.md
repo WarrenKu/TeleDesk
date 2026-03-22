@@ -8,10 +8,25 @@
 ![Telegram](https://img.shields.io/badge/Telegram-Bot-26A5E4?style=for-the-badge&logo=telegram&logoColor=white)
 ![Windows](https://img.shields.io/badge/Windows-10%2F11-0078D6?style=for-the-badge&logo=windows&logoColor=white)
 ![Playwright](https://img.shields.io/badge/Playwright-Browser-45BA4B?style=for-the-badge&logo=playwright&logoColor=white)
+![License](https://img.shields.io/badge/License-Personal-orange?style=for-the-badge)
 
 > *Remote desktop control via Telegram — buka browser, putar musik, ambil screenshot, baca file, semua dari HP kamu.*
 
+[![typing-svg](https://readme-typing-svg.herokuapp.com?size=22&duration=4000&center=true&vCenter=true&lines=Hello+world!;I'm+Rick+Warren;Welcome+to+scripping+broo!)](https://github.com/WarrenKu)
+
 </div>
+
+---
+
+## 📖 Tentang Project
+
+**TeleDesk Controller** adalah bot Telegram yang berjalan di PC Windows kamu dan memungkinkan kamu mengontrol desktop dari jarak jauh — cukup lewat chat Telegram di HP. Tidak perlu software remote desktop mahal, tidak perlu buka port, cukup Python dan koneksi internet.
+
+Cocok untuk:
+- 🏠 Kontrol PC rumah waktu kamu lagi di luar
+- 🎵 Remote play musik / YouTube dari kasur
+- 📁 Ambil file dari PC tanpa harus duduk di depan komputer
+- 👨‍💻 Automation & scripting dari mana saja
 
 ---
 
@@ -32,38 +47,61 @@
 
 ---
 
-## 🚀 Cara Install
+## ⚡ Quick Start
 
-**1. Clone repo**
+```bash
+# 1. Clone repo
+git clone https://github.com/WarrenKu/TeleDesk-Controller.git
+cd TeleDesk-Controller
+
+# 2. Install otomatis (double-click atau jalankan di CMD)
+setup.bat
+
+# 3. Isi token di bot_controller.py, lalu jalankan
+python bot_controller.py
+```
+
+> Butuh Python 3.10+ — download di [python.org](https://www.python.org/downloads/)
+
+---
+
+## 🚀 Cara Install (Detail)
+
+**Step 1 — Buat bot Telegram**
+
+1. Buka [@BotFather](https://t.me/BotFather) di Telegram
+2. Kirim `/newbot` → ikuti instruksi → copy **token**
+3. Dapatkan **user ID** kamu dari [@userinfobot](https://t.me/userinfobot)
+
+**Step 2 — Clone & install**
+
 ```bash
 git clone https://github.com/WarrenKu/TeleDesk-Controller.git
 cd TeleDesk-Controller
 ```
 
-**2. Install dependencies**
-```bash
-pip install python-telegram-bot playwright pycaw comtypes pyautogui Pillow requests pyttsx3 pygetwindow psutil pyperclip
-```
+Jalankan `setup.bat` (double-click) — akan otomatis install semua dependencies dan browser Playwright.
 
-**3. Install browser Playwright**
+Atau manual:
 ```bash
+pip install -r requirements.txt
 playwright install chromium
 ```
 
-**4. Konfigurasi token**
+**Step 3 — Konfigurasi**
 
-Buka `bot_controller.py`, isi bagian ini:
+Buka `bot_controller.py`, edit baris ini:
 ```python
-BOT_TOKEN = "token_bot_telegram_kamu"
-OWNER_ID  = 123456789  # user ID Telegram kamu
+BOT_TOKEN = "1234567890:AAxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+OWNER_ID  = 987654321
 ```
 
-> Dapatkan token dari [@BotFather](https://t.me/BotFather) dan user ID dari [@userinfobot](https://t.me/userinfobot)
-
-**5. Jalankan**
+**Step 4 — Jalankan**
 ```bash
 python bot_controller.py
 ```
+
+Bot online! Ketik `.help` di Telegram untuk mulai.
 
 ---
 
@@ -85,7 +123,7 @@ python bot_controller.py
 >run exec <perintah>                     Jalankan perintah, output ke Telegram
 ```
 
-Warna yang tersedia: `black` `blue` `green` `cyan` `red` `magenta` `pink` `yellow` `white` `gray` `lightblue` `lightgreen` `lightcyan` `lightred` `orange` `purple`
+Warna tersedia: `black` `blue` `green` `cyan` `red` `magenta` `pink` `yellow` `white` `gray` `lightblue` `lightgreen` `lightcyan` `lightred` `orange` `purple`
 
 ### 🪟 Window Manager
 ```
@@ -127,7 +165,7 @@ Warna yang tersedia: `black` `blue` `green` `cyan` `red` `magenta` `pink` `yello
 
 ### 📡 Live Screen
 ```
-.live                Mulai kirim screenshot tiap 2.5 detik
+.live                Mulai stream layar ke Telegram (tiap 2.5 detik)
 .stoplive            Hentikan live screen
 ```
 
@@ -135,29 +173,85 @@ Warna yang tersedia: `black` `blue` `green` `cyan` `red` `magenta` `pink` `yello
 ```
 .status              Status bot, browser, live, window aktif
 .lisensi             Info & credits
-.help                Tampilkan semua perintah
+.help                Tampilkan semua perintah (dengan tombol)
+```
+
+---
+
+## 📁 Struktur Project
+
+```
+TeleDesk-Controller/
+├── bot_controller.py    # Source utama
+├── requirements.txt     # Daftar dependencies
+├── setup.bat            # Auto-installer Windows
+├── .gitignore
+└── README.md
 ```
 
 ---
 
 ## 🔒 Keamanan
 
-- Bot **hanya merespons** dari `OWNER_ID` yang kamu set — orang lain tidak bisa kontrol
+- Bot **hanya merespons** dari `OWNER_ID` yang kamu set sendiri
 - Tidak ada data yang dikirim ke pihak ketiga
 - Semua aksi berjalan **lokal di PC kamu**
-- Token bot **jangan di-commit** ke repo — pakai `.env` atau environment variable
+- **Jangan commit token** ke repo — simpan di `.env` atau environment variable
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **[python-telegram-bot](https://python-telegram-bot.org/)** — Telegram Bot API
-- **[Playwright](https://playwright.dev/python/)** — Browser automation
-- **[pycaw](https://github.com/AndreMiras/pycaw)** — Windows audio control
-- **[pygetwindow](https://github.com/asweigart/PyGetWindow)** — Window manager
-- **[pyautogui](https://pyautogui.readthedocs.io/)** — GUI automation
-- **[psutil](https://psutil.readthedocs.io/)** — Process & system utilities
-- **[pyttsx3](https://pyttsx3.readthedocs.io/)** — Text-to-Speech
+| Library | Fungsi |
+|---|---|
+| [python-telegram-bot](https://python-telegram-bot.org/) | Telegram Bot API |
+| [Playwright](https://playwright.dev/python/) | Browser automation |
+| [pycaw](https://github.com/AndreMiras/pycaw) | Windows audio control |
+| [pygetwindow](https://github.com/asweigart/PyGetWindow) | Window manager |
+| [pyautogui](https://pyautogui.readthedocs.io/) | GUI automation |
+| [psutil](https://psutil.readthedocs.io/) | Process & system |
+| [pyttsx3](https://pyttsx3.readthedocs.io/) | Text-to-Speech |
+| [Pillow](https://pillow.readthedocs.io/) | Image processing |
+
+---
+
+## ❓ FAQ
+
+**Q: Apakah ini aman?**
+Bot hanya bisa dikontrol oleh kamu sendiri lewat `OWNER_ID`. Tidak ada backdoor, tidak ada data yang dikirim ke mana pun.
+
+**Q: Kenapa harus Windows?**
+Beberapa fitur seperti audio control (pycaw) dan window manager (pygetwindow) hanya support Windows. Browser automation dan fitur lain bisa jalan di OS lain dengan modifikasi.
+
+**Q: Apakah perlu Chrome terinstall?**
+Tidak wajib — kalau Chrome tidak ditemukan, bot otomatis pakai Chromium bawaan Playwright.
+
+**Q: Spotify tidak terbuka?**
+Bot akan cari Spotify.exe di beberapa lokasi umum. Kalau tidak ketemu, otomatis buka di browser. Pastikan Spotify sudah terinstall di lokasi default.
+
+**Q: Bot tidak merespons perintah?**
+Pastikan `OWNER_ID` sudah diisi dengan benar. Cek dengan kirim pesan apapun dan lihat log di terminal.
+
+---
+
+## 📝 Changelog
+
+### v3.2 — Latest
+- ✅ Skip iklan YouTube otomatis (deteksi JS akurat)
+- ✅ `.textrun` — efek animasi mengetik di Notepad
+- ✅ `.seefile` support list folder + baca file
+- ✅ `.getfile` download file langsung ke Telegram
+- ✅ `.s sc` screenshot manager
+- ✅ Inline keyboard tombol `.help` & GitHub di setiap pesan
+- ✅ Spotify auto-detect exe
+
+### v3.1
+- ✅ Fix skip iklan tidak loop
+- ✅ Window manager `.s`
+- ✅ Live screen `.live`
+
+### v3.0
+- ✅ Initial release
 
 ---
 
@@ -165,15 +259,18 @@ Warna yang tersedia: `black` `blue` `green` `cyan` `red` `magenta` `pink` `yello
 
 Project ini dibuat untuk keperluan **personal & testing**.
 
-> Ini bukan virus atau remote malware.
-> Hanya owner yang bisa mengontrol bot ini.
+```
+Ini bukan virus atau remote malware.
+Hanya owner yang bisa mengontrol bot ini.
+Gunakan dengan bijak dan bertanggung jawab.
+```
 
 ---
 
 <div align="center">
 
-Made with ❤️ by **Warren** & **Claude (Anthropic AI)**
+Made with ❤️ by **[Warren](https://github.com/WarrenKu)** & **Claude (Anthropic AI)**
 
-⭐ *Star repo ini kalau bermanfaat!*
+⭐ *Kalau project ini bermanfaat, kasih star ya!*
 
 </div>
